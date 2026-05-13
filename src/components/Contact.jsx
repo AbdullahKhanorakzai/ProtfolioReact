@@ -57,7 +57,7 @@ export default function Contact() {
 
           <motion.form
             name="contact"
-            method="POST"
+            netlify
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             variants={itemVariants}

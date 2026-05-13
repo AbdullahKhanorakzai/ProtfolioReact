@@ -13,18 +13,35 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
 };
 
 const skillCategories = [
   {
     title: "Frontend",
-    skills: ["React.js", "JavaScript", "HTML & CSS", "Responsive Design", "Figma", "Tailwind CSS"],
+    skills: [
+      "React.js",
+      "JavaScript",
+      "HTML & CSS",
+      "Responsive Design",
+      "Figma",
+      "Tailwind CSS",
+    ],
     color: "from-pink-400 to-rose-400",
   },
   {
     title: "Backend",
-    skills: ["PHP", "Laravel", "Server-side Logic", "Authentication", "RESTful APIs"],
+    skills: [
+      "PHP",
+      "Laravel",
+      "Server-side Logic",
+      "Authentication",
+      "RESTful APIs",
+    ],
     color: "from-blue-400 to-cyan-400",
   },
   {
@@ -78,9 +95,11 @@ export default function Skills() {
               className="relative overflow-hidden rounded-[30px] border border-black/5 bg-white/85 p-8 shadow-[0_25px_80px_rgba(15,15,15,0.06)] transition-all hover:-translate-y-2 hover:shadow-[0_40px_120px_rgba(184,159,248,0.16)]"
               whileHover={{ scale: 1.01 }}
             >
-              <div className={`absolute inset-x-6 top-6 h-1 rounded-full bg-gradient-to-r ${category.color} opacity-90`} />
+              <div
+                className={`absolute inset-x-6 top-6 h-1 rounded-full bg-gradient-to-r ${category.color} opacity-90`}
+              />
               <motion.p
-                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
+                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text`}
               >
                 {category.title}
               </motion.p>

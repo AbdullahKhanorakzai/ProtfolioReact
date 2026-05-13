@@ -13,7 +13,11 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
 };
 
 const services = [
@@ -49,11 +53,12 @@ export default function Services() {
   return (
     <section
       ref={ref}
-      className="relative py-24 px-12 sm:px-6 lg:px-20 bg-white"
+      className="relative py-24 px-6 sm:px-12 lg:px-20 bg-white"
       id="services"
     >
-      <div className="absolute left-10 top-10 h-64 w-64 rounded-full bg-pink-200/20 blur-3xl" />
-      <div className="absolute right-10 bottom-24 h-64 w-64 rounded-full bg-purple-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute left-10 top-10 h-64 w-64 rounded-full bg-pink-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute right-10 bottom-24 h-64 w-64 rounded-full bg-purple-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_70%)]" />
 
       <motion.div
         className="relative mx-auto max-w-[1400px]"
@@ -79,11 +84,11 @@ export default function Services() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-[32px] border border-black/5 bg-white/95 p-10 shadow-[0_25px_90px_rgba(15,15,15,0.06)] transition-transform duration-300"
+              whileHover={{ y: -8, scale: 1.01 }}
+              className="group relative overflow-hidden rounded-[32px] border border-black/10 bg-white/95 p-10 shadow-[0_25px_90px_rgba(15,15,15,0.06)] transition-transform duration-300 will-change-transform"
             >
               <div
-                className={`absolute -left-6 top-6 h-24 w-24 rounded-full bg-gradient-to-br ${service.accent} opacity-10 blur-3xl`}
+                className={`absolute -left-6 top-6 h-24 w-24 rounded-full bg-gradient-to-br ${service.accent} opacity-15 blur-3xl`}
               />
               <div className="relative z-10">
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-black/5 text-3xl text-black/80 transition-all group-hover:scale-105">

@@ -63,10 +63,11 @@ export default function Skills() {
     <section
       ref={ref}
       id="skills"
-      className="relative py-24 px-12 sm:px-6 lg:px-20 bg-[radial-gradient(circle_at_top_left,rgba(232,143,160,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(184,159,248,0.1),transparent_24%)]"
+      className="relative py-24 px-6 sm:px-12 lg:px-20 bg-[radial-gradient(circle_at_top_left,rgba(232,143,160,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(184,159,248,0.1),transparent_24%)]"
     >
-      <div className="absolute right-0 top-16 h-60 w-60 rounded-full bg-purple-200/25 blur-3xl" />
-      <div className="absolute left-0 bottom-0 h-56 w-56 rounded-full bg-orange-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-16 h-60 w-60 rounded-full bg-purple-200/25 blur-3xl" />
+      <div className="pointer-events-none absolute left-0 bottom-0 h-56 w-56 rounded-full bg-orange-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_60%)]" />
 
       <motion.div
         className="relative mx-auto max-w-[1400px]"
@@ -92,14 +93,14 @@ export default function Skills() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="relative overflow-hidden rounded-[30px] border border-black/5 bg-white/85 p-8 shadow-[0_25px_80px_rgba(15,15,15,0.06)] transition-all hover:-translate-y-2 hover:shadow-[0_40px_120px_rgba(184,159,248,0.16)]"
-              whileHover={{ scale: 1.01 }}
+              whileHover={{ y: -8, scale: 1.01, rotateX: 0.5, rotateY: 0.5 }}
+              className="group relative overflow-hidden rounded-[30px] border border-black/5 bg-white/85 p-8 shadow-[0_25px_80px_rgba(15,15,15,0.06)] transition-all will-change-transform"
             >
               <div
                 className={`absolute inset-x-6 top-6 h-1 rounded-full bg-gradient-to-r ${category.color} opacity-90`}
               />
               <motion.p
-                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text`}
+                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
               >
                 {category.title}
               </motion.p>
@@ -115,6 +116,7 @@ export default function Skills() {
                   </motion.li>
                 ))}
               </ul>
+              <div className="pointer-events-none absolute -right-6 bottom-10 h-12 w-12 rounded-full bg-gradient-to-br from-pink-300 to-violet-300 opacity-30 blur-3xl" />
             </motion.div>
           ))}
         </motion.div>

@@ -32,7 +32,10 @@ export default function Navigation() {
           : "bg-white/30 border-b border-transparent"
       }`}
     >
-      <motion.span className="text-sm font-semibold tracking-[0.3em] uppercase" whileHover={{ scale: 1.02 }}>
+      <motion.span
+        className="text-sm font-semibold tracking-[0.3em] uppercase"
+        whileHover={{ scale: 1.02 }}
+      >
         Abdullah
       </motion.span>
 
@@ -41,6 +44,7 @@ export default function Navigation() {
           <motion.a
             key={item}
             href={`#${item.toLowerCase()}`}
+            data-cursor="magnetic"
             whileHover={{ color: "#0f0f0f" }}
             className="transition-colors"
           >
@@ -51,6 +55,7 @@ export default function Navigation() {
 
       <motion.a
         href="#contact"
+        data-cursor="magnetic"
         className="mt-3 sm:mt-0 rounded-full border border-black/10 bg-black/95 px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_15px_30px_rgba(0,0,0,0.12)] transition-all"
         whileHover={{ scale: 1.03, backgroundColor: "#0e0e0e" }}
         whileTap={{ scale: 0.96 }}

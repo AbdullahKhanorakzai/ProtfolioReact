@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "./components/Navigation";
 import AnimatedBackground from "./components/AnimatedBackground";
+import CustomCursor from "./components/CustomCursor";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -15,7 +16,8 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
     };
 
@@ -25,7 +27,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(232,143,160,0.12),_transparent_25%),radial-gradient(circle_at_bottom_right,_rgba(184,159,248,0.08),_transparent_22%),#faf9f6] text-black">
+    <div className="relative overflow-hidden text-black bg-[radial-gradient(circle_at_top_left,rgba(232,143,160,0.12),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(184,159,248,0.08),transparent_22%),#faf9f6]">
       <motion.div className="fixed inset-x-0 top-0 h-1.5 z-50 pointer-events-none">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 shadow-[0_0_25px_rgba(232,143,160,0.3)]"
@@ -35,6 +37,7 @@ export default function App() {
       </motion.div>
 
       <AnimatedBackground />
+      <CustomCursor />
       <Navigation />
 
       <main className="relative">

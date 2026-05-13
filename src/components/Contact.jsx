@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -22,13 +22,6 @@ const itemVariants = {
 
 export default function Contact() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-  };
 
   return (
     <section
@@ -63,16 +56,22 @@ export default function Contact() {
           </motion.div>
 
           <motion.form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             variants={itemVariants}
-            onSubmit={handleSubmit}
             className="space-y-4"
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
               <label className="sr-only" htmlFor="contact-name">
                 Your Name
               </label>
               <motion.input
                 id="contact-name"
+                name="name"
                 type="text"
                 placeholder="Your Name"
                 className="rounded-3xl border border-white/15 bg-white/10 px-6 py-4 text-sm text-white placeholder-white/40 outline-none transition-all focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-purple-400/20"
@@ -83,6 +82,7 @@ export default function Contact() {
               </label>
               <motion.input
                 id="contact-email"
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 className="rounded-3xl border border-white/15 bg-white/10 px-6 py-4 text-sm text-white placeholder-white/40 outline-none transition-all focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-purple-400/20"
@@ -95,6 +95,7 @@ export default function Contact() {
             </label>
             <motion.textarea
               id="contact-message"
+              name="message"
               placeholder="Your Message"
               rows="5"
               className="w-full rounded-3xl border border-white/15 bg-white/10 px-6 py-4 text-sm text-white placeholder-white/40 outline-none transition-all focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-purple-400/20"
@@ -103,16 +104,12 @@ export default function Contact() {
 
             <motion.button
               type="submit"
-              className={`w-full rounded-3xl border px-6 py-4 text-sm font-semibold uppercase tracking-[0.35em] transition-all ${
-                submitted
-                  ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-200"
-                  : "border-white/20 bg-white/10 text-white hover:bg-white/20"
-              }`}
-              whileHover={!submitted ? { scale: 1.02 } : {}}
-              whileTap={!submitted ? { scale: 0.98 } : {}}
+              className="w-full rounded-3xl border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.35em] text-white transition-all hover:bg-white/20"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               data-cursor="magnetic"
             >
-              {submitted ? "✓ Message Sent!" : "Send Message"}
+              Send Message
             </motion.button>
           </motion.form>
         </div>

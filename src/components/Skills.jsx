@@ -83,7 +83,7 @@ export default function Skills() {
         </motion.p>
         <motion.h2
           variants={itemVariants}
-          className="font-serif text-5xl font-light mb-12 text-black"
+          className="font-serif text-5xl font-semibold mb-12 text-slate-950 opacity-100 drop-shadow-[0_1px_6px_rgba(15,23,42,0.12)]"
         >
           Skills & Technologies
         </motion.h2>
@@ -100,7 +100,7 @@ export default function Skills() {
                 className={`absolute inset-x-6 top-6 h-1 rounded-full bg-gradient-to-r ${category.color} opacity-90`}
               />
               <motion.p
-                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
+                className={`relative text-xs font-semibold uppercase tracking-[0.35em] mb-5 bg-gradient-to-r ${category.color} bg-clip-text `}
               >
                 {category.title}
               </motion.p>

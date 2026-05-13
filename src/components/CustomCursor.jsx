@@ -74,7 +74,7 @@ export default function CustomCursor() {
   return (
     <div className="pointer-events-none fixed inset-0 hidden lg:block z-[9999]">
       <motion.div
-        className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.25)]"
+        className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300 bg-white/10 shadow-[0_0_30px_rgba(0, 233, 233, 0.5)]"
         style={{ x: springX, y: springY }}
         animate={{
           scale: isMagnetic ? 2.2 : isActive ? 1.1 : 0.75,
@@ -83,7 +83,7 @@ export default function CustomCursor() {
         transition={{ type: "spring", stiffness: 220, damping: 28 }}
       />
       <motion.div
-        className="absolute left-0 top-0 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500 shadow-[0_0_20px_rgba(255,255,255,0.45)]"
+        className="absolute left-0 top-0 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500 shadow-[0_0_20px_#21eaf86c]"
         style={{ x: cursorX, y: cursorY }}
         animate={{ scale: isMagnetic ? 1.35 : 1, opacity: isActive ? 1 : 0 }}
         transition={{ type: "spring", stiffness: 260, damping: 26 }}

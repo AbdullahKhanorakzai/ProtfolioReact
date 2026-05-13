@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -22,6 +22,7 @@ const itemVariants = {
 
 export default function Contact() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <section
@@ -57,10 +58,12 @@ export default function Contact() {
 
           <motion.form
             name="contact"
-            netlify
+            method="POST"
+            action="/success"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             variants={itemVariants}
+            onSubmit={() => setIsSubmitting(true)}
             className="space-y-4"
           >
             <input type="hidden" name="form-name" value="contact" />
@@ -104,12 +107,18 @@ export default function Contact() {
 
             <motion.button
               type="submit"
-              className="w-full rounded-3xl border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.35em] text-white transition-all hover:bg-white/20"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
+              className={`w-full rounded-3xl border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.35em] text-white transition-all ${
+                isSubmitting
+                  ? "cursor-not-allowed opacity-70"
+                  : "hover:bg-white/20"
+              }`}
+              whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               data-cursor="magnetic"
+              aria-busy={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </motion.button>
           </motion.form>
         </div>

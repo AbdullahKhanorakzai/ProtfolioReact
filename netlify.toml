@@ -6,3 +6,14 @@
   NODE_VERSION = "20"
   NODE_OPTIONS = "--max-old-space-size=4096"
   NPM_CONFIG_PRODUCTION = "false"
+
+[[redirects]]
+  from = "/success"
+  to = "/success"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true

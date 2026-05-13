@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import AnimatedBackground from "./components/AnimatedBackground";
 import CustomCursor from "./components/CustomCursor";
@@ -9,6 +10,7 @@ import Skills from "./components/Skills";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Success from "./components/Success";
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -26,7 +28,7 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
+  const HomePage = (
     <div className="relative overflow-hidden text-black bg-[radial-gradient(circle_at_top_left,rgba(232,143,160,0.12),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(184,159,248,0.08),transparent_22%),#faf9f6]">
       <motion.div className="fixed inset-x-0 top-0 h-1.5 z-50 pointer-events-none">
         <motion.div
@@ -58,5 +60,13 @@ export default function App() {
         <p>© 2026 Abdullah • Full-Stack Developer</p>
       </footer>
     </div>
+  );
+
+  return (
+    <Routes>
+      <Route path="/" element={HomePage} />
+      <Route path="/success" element={<Success />} />
+      <Route path="*" element={HomePage} />
+    </Routes>
   );
 }
